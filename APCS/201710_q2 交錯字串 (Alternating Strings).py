@@ -1,3 +1,4 @@
+k = int(input())
 s = input()
 cnt = 0
 L = []
@@ -14,5 +15,19 @@ for i in s:
     ul = ul^1
 L.append(cnt)
 
-print(L)
-  
+ans = 0
+cnt = 0
+last = 0
+
+for i in L:
+  if i > k:
+    ans = max(cnt+1, ans)
+    cnt = 1
+  elif i == k:
+    cnt += 1 
+  else:
+    ans = max(cnt, ans)
+    cnt = 0
+    last = 0
+ans = max(cnt, ans)
+print(ans * k)
